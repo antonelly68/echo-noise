@@ -1,10 +1,11 @@
 import definePlugin from "@utils/types";
-import { findByProps, findByStoreName } from "@webpack";
+import { findByProps } from "@webpack";
 import { Logger } from "@utils/Logger";
 
-const MediaEngineActions = findByProps("setEchoCancellation", "setNoiseSuppression");
-const MediaEngineStore = findByStoreName("MediaEngineStore");
-const ToastStore = findByProps("showToast", "createToast");
+// Wir suchen die Module jetzt über ihre einzigartigen Eigenschaften (findByProps)
+const MediaEngineActions = findByProps("setEchoCancellation", "setNoiseSuppression") as any;
+const MediaEngineStore = findByProps("getSettings", "isDeaf", "isMute") as any;
+const ToastStore = findByProps("showToast", "createToast") as any;
 
 let keydownHandler: (e: KeyboardEvent) => void;
 
